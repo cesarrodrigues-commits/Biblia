@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Divisões da Bíblia Evangélica</title>
+<meta name="description" content="Cronograma visual dos 66 livros da Bíblia Evangélica e seus capítulos." />
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background: #f7f3ec;
+  color: #2b2118;
+  min-height: 100vh;
+}
+main { max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.5rem 3rem; }
+.topbar { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.brand-mark { width: 44px; height: 56px; border: 3px solid #7a5230; border-radius: 6px; position: relative; background: #fdf9f3; flex-shrink: 0; }
+.brand-mark span:first-child { position: absolute; left: 50%; top: 6px; bottom: 6px; width: 2px; background: #7a5230; opacity: .4; }
+.brand-mark span:last-child { position: absolute; left: 6px; right: 6px; top: 50%; height: 2px; background: #7a5230; opacity: .4; }
+.eyebrow { font-family: Verdana, sans-serif; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: #a05a2c; }
+h1 { font-size: 2rem; font-weight: 700; }
+.summary { margin-left: auto; display: flex; align-items: center; gap: .75rem; font-family: Verdana, sans-serif; font-size: .85rem; color: #5c4a38; }
+.summary strong { font-size: 1.15rem; color: #2b2118; }
+.summary i { width: 1px; height: 22px; background: #c9b8a2; }
+.filters { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 2.25rem; }
+.filters button {
+  font-family: Verdana, sans-serif; font-size: .82rem; padding: .5rem 1rem;
+  border: 1px solid #c9b8a2; background: #fdf9f3; color: #5c4a38;
+  border-radius: 999px; cursor: pointer; transition: all .15s;
+}
+.filters button:hover { border-color: #a05a2c; color: #a05a2c; }
+.filters button.active { background: #7a5230; border-color: #7a5230; color: #fdf9f3; }
+.canvas { border: 1px solid #e3d6c3; border-radius: 16px; background: #fdf9f3; padding: 2rem 1.5rem; }
+.root-node {
+  margin: 0 auto; width: fit-content; text-align: center;
+  border: 2px solid #7a5230; background: #7a5230; color: #fdf9f3;
+  border-radius: 12px; padding: .8rem 2rem;
+}
+.root-node span { display: block; font-size: 1.15rem; font-weight: 700; }
+.root-node strong { font-family: Verdana, sans-serif; font-size: .75rem; font-weight: 400; opacity: .85; }
+.root-line { width: 2px; height: 28px; background: #c9b8a2; margin: 0 auto; }
+.testaments { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+@media (max-width: 900px) { .testaments { grid-template-columns: 1fr; } }
+.testament-heading { text-align: center; margin-bottom: .25rem; }
+.testament-heading h2 { font-size: 1.35rem; color: #7a5230; }
+.testament-heading p { font-family: Verdana, sans-serif; font-size: .78rem; color: #8a7458; margin-top: .2rem; }
+.branch-line { width: 2px; height: 22px; background: #c9b8a2; margin: 0 auto; }
+.groups { display: flex; flex-direction: column; gap: 1.1rem; }
+.testament.expanded .groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.group-column { border: 1px solid #e3d6c3; border-radius: 12px; background: #fff; padding: 1rem 1.1rem; }
+.group-title { font-size: 1.02rem; padding-bottom: .45rem; }
+.stem { height: 3px; border-radius: 2px; margin-bottom: .7rem; }
+.tone-law .stem, .tone-law { --tone: #a05a2c; }
+.group-title { color: var(--tone, #7a5230); }
+.stem { background: var(--tone, #7a5230); opacity: .55; }
+.tone-law { --tone: #a05a2c; } .tone-history { --tone: #8c6d3f; }
+.tone-poetry { --tone: #4f7a5b; } .tone-major { --tone: #6b5b95; }
+.tone-minor { --tone: #9c7bb0; } .tone-gospels { --tone: #b03a2e; }
+.tone-acts { --tone: #c0693b; } .tone-paul { --tone: #2e6e8e; }
+.tone-general { --tone: #4a90a4; } .tone-prophecy { --tone: #7a5230; }
+.book-list { list-style: none; display: flex; flex-direction: column; }
+.book {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+  padding: .34rem .2rem; border-bottom: 1px dashed #eee2d2; font-size: .95rem;
+}
+.book:last-child { border-bottom: none; }
+.book strong { font-family: Verdana, sans-serif; font-size: .72rem; font-weight: 400; color: #8a7458; white-space: nowrap; }
+footer {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem;
+  margin-top: 2rem; font-family: Verdana, sans-serif; font-size: .75rem; color: #8a7458;
+}
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <header class="topbar">
+    <div class="brand-mark" aria-hidden="true"><span></span><span></span></div>
+    <div>
+      <p class="eyebrow">Guia de estudo</p>
+      <h1>Divisões da Bíblia Evangélica</h1>
+    </div>
+    <div class="summary" aria-label="Resumo">
+      <span><strong>66</strong> livros</span>
+      <i aria-hidden="true"></i>
+      <span><strong>1.189</strong> capítulos</span>
+    </div>
+  </header>
+
+  <nav class="filters" aria-label="Filtrar testamento">
+    <button type="button" class="active" data-filter="all">Bíblia completa</button>
+    <button type="button" data-filter="old">Antigo Testamento</button>
+    <button type="button" data-filter="new">Novo Testamento</button>
+  </nav>
+
+  <div class="canvas">
+    <div class="root-node"><span>A Bíblia</span><strong>66 livros</strong></div>
+    <div class="root-line" aria-hidden="true"></div>
+    <div class="testaments">
+      <section class="testament" id="testament-old">
+        <div class="testament-heading">
+          <h2>Antigo Testamento</h2>
+          <p>39 livros · 929 capítulos</p>
+        </div>
+        <div class="branch-line" aria-hidden="true"></div>
+        <div class="groups">
+          <section class="group-column tone-law">
+            <h3 class="group-title">Livros da Lei</h3>
+            <div class="stem" aria-hidden="true"></div>
+            <ol class="book-list">
+              <li class="book"><span>Gênesis</span><strong>50 capítulos</strong></li>
+              <li class="book"><span>Êxodo</span><strong>40 capítulos</strong></li>
+              <li class="book"><span>Levítico</span><strong>27 capítulos</strong></li>
+              <li class="book"><span>Números</span><strong>36 capítulos</strong></li>
+              <li class="book"><span>Deuteronômio</span><strong>34 capítulos</strong></li>
+            </ol>
+          </section>
+          <section class="group-column tone-history">
+            <h3 class="group-title">Livros Históricos</h3>
+            <div class="stem" aria-hidden="true"></div>
+            <ol class="book-list">
+              <li class="book"><span>Josué</span><strong>24 capítulos</strong></li>
+              <li class="book"><span>Juízes</span><strong>21 capítulos</strong></li>
+              <li class="book"><span>Rute</span><strong>4 capítulos</strong></li>
+              <li class="book"><span>1 Samuel</span><strong>31 capítulos</strong></li>
+              <li class="book"><span>2 Samuel</span><strong>24 capítulos</strong></li>
+              <li class="book"><span>1 Reis</span><strong>22 capítulos</strong></li>
+              <li class="book"><span>2 Reis</span><strong>25 capítulos</strong></li>
+              <li class="book"><span>1 Crônicas</span><strong>29 capítulos</strong></li>
+              <li class="book"><span>2 Crônicas</span><strong>36 capítulos</strong></li>
+              <li class="book"><span>Esdras</span><strong>10 capítulos</strong></li>
+              <li class="book"><span>Neemias</span><strong>13 capítulos</strong></li>
+              <li class="book"><span>Ester</span><strong>10 capítulos</strong></li>
+            </ol>
+          </section>
+          <section class="group-column tone-poetry">
+            <h3 class="group-title">Livros Poéticos</h3>
+            <div class="stem" aria-hidden="true"></div>
+            <ol class="book-list">
+              <li class="book"><span>Jó</span><strong>42 capítulos</strong></li>
+              <li class="book"><span>Salmos</span><strong>150 capítulos</strong></li>
+              <li class="book"><span>Provérbios</span><strong>31 capítulos</strong></li>
+              <li class="book"><span>Eclesiastes</span><strong>12 capítulos</strong></li>
+              <li class="book"><span>Cantares</span><strong>8 capítulos</strong></li>
+            </ol>
+          </section>
+          <section class="group-column tone-major">
+            <h3 class="group-title">Profetas Maiores</h3>
+            <div class="stem" aria-hidden="true"></div>
+            <ol class="book-list">
+              <li class="book"><span>Isaías</span><strong>66 capítulos</strong></li>
+              <li class="book"><span>Jeremias</span><strong>52 capítulos</strong></li>
+              <li class="book"><span>Lamentações</span><strong>5 capítulos</strong></li>
+              <li class="book"><span>Ezequiel</span><strong>48 capítulos</strong></li>
+              <li class="book"><span>Daniel</span><strong>12 capítulos</strong></li>
+            </ol>
+          </section>
+          <section class="group-column tone-minor">
+            <h3 class="group-title">Profetas Menores</h3>
+            <div class="stem" aria-hidden="true"></div>
+            <ol class="book-list">
+              <li class="book"><span>Oseias</span><strong>14 capítulos</strong></li>
+              <li class="book"><span>Joel</span><strong>3 capítulos</strong></li>
+              <li class="book"><span>Amós</span><strong>9 capítulos</strong></li>
+              <li class="book"><span>Obadias</span><strong>1 capítulo</strong></li>
+              <li class="book"><span>Jonas</span><strong>4 capítulos</strong></li>
+              <li class="book"><span>Miqueias</span><strong>7 capítulos</strong></li>
+              <li class="book"><span>Naum</span><strong>3 capítulos</strong></li>
+              <li class="book"><span>Habacuque</span><strong>3 capítulos</strong></li>
+              <li class="book"><span>Sofonias</span><strong>3 capítulos</strong></li>
+              <li class="book"><span>Ageu</span><strong>2 capítulos</strong></li>
+              <li class="book"><span>Zacarias</span><strong>14 capítulos</strong></li>
+              <li class="book"><span>Malaquias</span><strong>4 capítulos</strong></li>
+            </ol>
+          </section>
+        </div>
+      </section>
+      <section class="testament" id="testament-new">
+        <div class="testament-heading">
+          <h2>Novo Testamento</h2>
+          <p>27 livros · 260 capítulos</p>
+        </div>
+        <div class="branch-line" aria-hidden="true"></div>
+        <div class="groups">
+          <section class="group-column tone-gospels">
+            <h3 class="group-title">Evangelhos</h3>
+            <div class="stem" aria-hidden="true"></div>
+            <ol class="book-list">
+              <li class="book"><span>Mateus</span><strong>28 capítulos</strong></li>
+              <li class="book"><span>Marcos</span><strong>16 capítulos</strong></li>
+              <li class="book"><span>Lucas</span><strong>24 capítulos</strong></li>
+              <li class="book"><span>João</span><strong>21 capítulos</strong></li>
+            </ol>
+          </section>
+          <section class="group-column tone-acts">
+            <h3 class="group-title">Histórico</h3>
+            <div class="stem" aria-hidden="true"></div>
+            <ol class="book-list">
+              <li class="book"><span>Atos</span><strong>28 capítulos</strong></li>
+            </ol>
+          </section>
+          <section class="group-column tone-paul">
+            <h3 class="group-title">Cartas de Paulo</h3>
+            <div class="stem" aria-hidden="true"></div>
+            <ol class="book-list">
+              <li class="book"><span>Romanos</span><strong>16 capítulos</strong></li>
+              <li class="book"><span>1 Coríntios</span><strong>16 capítulos</strong></li>
+              <li class="book"><span>2 Coríntios</span><strong>13 capítulos</strong></li>
+              <li class="book"><span>Gálatas</span><strong>6 capítulos</strong></li>
+              <li class="book"><span>Efésios</span><strong>6 capítulos</strong></li>
+              <li class="book"><span>Filipenses</span><strong>4 capítulos</strong></li>
+              <li class="book"><span>Colossenses</span><strong>4 capítulos</strong></li>
+              <li class="book"><span>1 Tessalonicenses</span><strong>5 capítulos</strong></li>
+              <li class="book"><span>2 Tessalonicenses</span><strong>3 capítulos</strong></li>
+              <li class="book"><span>1 Timóteo</span><strong>6 capítulos</strong></li>
+              <li class="book"><span>2 Timóteo</span><strong>4 capítulos</strong></li>
+              <li class="book"><span>Tito</span><strong>3 capítulos</strong></li>
+              <li class="book"><span>Filemom</span><strong>1 capítulo</strong></li>
+            </ol>
+          </section>
+          <section class="group-column tone-general">
+            <h3 class="group-title">Cartas Gerais</h3>
+            <div class="stem" aria-hidden="true"></div>
+            <ol class="book-list">
+              <li class="book"><span>Hebreus</span><strong>13 capítulos</strong></li>
+              <li class="book"><span>Tiago</span><strong>5 capítulos</strong></li>
+              <li class="book"><span>1 Pedro</span><strong>5 capítulos</strong></li>
+              <li class="book"><span>2 Pedro</span><strong>3 capítulos</strong></li>
+              <li class="book"><span>1 João</span><strong>5 capítulos</strong></li>
+              <li class="book"><span>2 João</span><strong>1 capítulo</strong></li>
+              <li class="book"><span>3 João</span><strong>1 capítulo</strong></li>
+              <li class="book"><span>Judas</span><strong>1 capítulo</strong></li>
+            </ol>
+          </section>
+          <section class="group-column tone-prophecy">
+            <h3 class="group-title">Profético</h3>
+            <div class="stem" aria-hidden="true"></div>
+            <ol class="book-list">
+              <li class="book"><span>Apocalipse</span><strong>22 capítulos</strong></li>
+            </ol>
+          </section>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <footer><span>Do Gênesis ao Apocalipse</span><span>Tradução protestante · 66 livros</span></footer>
+</main>
+
+<script>
+const buttons = document.querySelectorAll('.filters button');
+const oldT = document.getElementById('testament-old');
+const newT = document.getElementById('testament-new');
+buttons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    buttons.forEach((b) => b.classList.toggle('active', b === btn));
+    const f = btn.dataset.filter;
+    oldT.classList.toggle('hidden', f === 'new');
+    newT.classList.toggle('hidden', f === 'old');
+    oldT.classList.toggle('expanded', f === 'old');
+    newT.classList.toggle('expanded', f === 'new');
+    oldT.classList.toggle('expanded', false || f === 'old');
+    if (f === 'all') { oldT.classList.remove('expanded'); newT.classList.remove('expanded'); }
+  });
+});
+</script>
+</body>
+</html>
